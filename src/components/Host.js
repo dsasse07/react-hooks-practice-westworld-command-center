@@ -2,13 +2,19 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import "../stylesheets/Host.css";
 
-function Host() {
-  /* NOTE: The className "host selected" renders a different style than simply "host". */
+function Host({host, displayedHostId, onDisplayHost}) {
+
+  const {id, imageUrl} = host
+  
+  function handleDisplayHost(){
+    onDisplayHost(id)
+  }
+  
   return (
     <Card
-      className="host selected"
-      onClick={/* On Click what? */ null}
-      image={/* I wonder what goes here...*/ ""}
+      className= {displayedHostId === id ? "host selected" : "host" }
+      onClick={handleDisplayHost}
+      image={imageUrl}
       raised
       link
     />
